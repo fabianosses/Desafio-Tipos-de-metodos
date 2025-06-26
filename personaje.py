@@ -3,7 +3,6 @@ class Personaje:
         self.nombre = nombre
         self.nivel = 1
         self.exp = 0
-        pass
 
     @property
     def estado(self):
@@ -20,11 +19,14 @@ class Personaje:
 
         # bajar Nivel
         while exp_temp < 0:
-            self.nivel -= 1
-            exp_temp = 0
             if self.nivel == 1:
                 self.exp = 0
                 exp_temp = 0
+            else:
+                self.nivel -= 1
+                exp_temp = 0
+
+        self.exp = exp_temp
 
     def __lt__ (self, enemigo):
     # sobrecarga para método de "menor que" implementado para mis instancias

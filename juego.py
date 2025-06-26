@@ -2,15 +2,18 @@ from personaje import Personaje
 import random
 import os
 
-def limpiar_pantalla():
-    """Limpia la pantalla de la consola."""
-    if os.name == "nt":
-        # Para Windows
-        os.system("cls")
+def limpiar_terminal():
+    """
+    Limpia pantalla de terminmal
+    """
+    if os.system == "cls":  # For Windows
+        _ = os.system('cls')
+    else:  # For Linux and macOS
+        _ = os.system('clear')
 
 print("¡Bienvenido a Gran Fantasía!")
 nombre = input("Por favor indique nombre de su personaje:")
-limpiar_pantalla()
+limpiar_terminal()
 
 personaje = Personaje(nombre)
 
@@ -21,6 +24,7 @@ prob = personaje.probabilidad(nn)
 opcion = Personaje.mostrar_mensaje(prob)
 
 while opcion == 1:
+    limpiar_terminal()
     resultado = "G" if random.uniform(0,100) < prob else "P"
     if resultado == "G":
         print("""
@@ -36,3 +40,11 @@ while opcion == 1:
 """)
         personaje.estado = -30
         nn.estado = 50
+
+    print(personaje.estado)
+    print(nn.estado)
+
+    prob = personaje.probabilidad(nn)
+    opcion = Personaje.mostrar_mensaje(prob)
+
+print("has huido!!")
