@@ -1,5 +1,5 @@
 class Personaje:
-    def __init__(self, nombre):
+    def __init__(self, nombre = "orco"):
         self.nombre = nombre
         self.nivel = 1
         self.exp = 0
@@ -7,7 +7,7 @@ class Personaje:
 
     @property
     def estado(self):
-        return f"El nombre es: {self.nombre}, su nivel: {self.nivel}, su experiencia: {self.exp}"
+        return f"NOMBRE: {self.nombre}       NIVEL: {self.nivel}      EXP: {self.exp}"
     
     @estado.setter
     def estado(self, exp):
@@ -45,15 +45,23 @@ class Personaje:
         ○ Siel jugador es igual al orco, tiene un 50% de probabilidades de ganar.
         """
         if self < enemigo:
-            return 0.33
+            return 33
         elif self > enemigo:
-            return 0.66
+            return 66
         else:
             self == enemigo
-            return 0.5
+            return 50
 
+    @staticmethod
+    def mostrar_mensaje (probab):
+        return int(input(f"""
+        ¡Oh no!, ¡Ha aparecido un Orco!
+                         
+ Con tu nivel actual, tienes {probab} de probabilidades de ganarle al Orco.
+ Si ganas, ganarás 50 puntos de experiencia y el orco perderá 30.
+ Si pierdes, perderás 30 puntos de experiencia y el orco ganará 50.
+ ¿Qué deseas hacer?
+ 1. Atacar
+ 2. Huir            """))
 
-
-
-        
 
